@@ -5,6 +5,7 @@ import com.example.touristattraction.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TouristService {
@@ -23,15 +24,15 @@ public class TouristService {
         return touristRepository.getAttractions();
     }
 
-    public TouristAttraction getAttraction(String name) {
-        return touristRepository.getAttraction(name);
+    public TouristAttraction getAttraction(UUID id) {
+        return touristRepository.getAttraction(id);
     }
 
     public void updateAttraction(TouristAttraction updatedAttraction) {
         touristRepository.updateAttraction(updatedAttraction);
     }
 
-    public void deleteAttraction(String name) {
-        touristRepository.deleteAttraction(name);
+    public void deleteAttraction(UUID id) {
+        touristRepository.deleteAttraction(id);
     }
 }

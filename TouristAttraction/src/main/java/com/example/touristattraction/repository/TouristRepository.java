@@ -3,51 +3,47 @@ package com.example.touristattraction.repository;
 import com.example.touristattraction.model.TouristAttraction;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class TouristRepository {
 
-    private List<TouristAttraction> attractions = new ArrayList<>();
+    private final Map<UUID, TouristAttraction> attractions = new LinkedHashMap<>();
 
     public TouristRepository() {
-        attractions.add(new TouristAttraction("Den Lille Havfrue", "Københavns mest berømte statue"));
-        attractions.add(new TouristAttraction("Tivoli", "En af verdens ældste forlystelsesparker"));
+        TouristAttraction a1 = new TouristAttraction(
+                "Den Lille Havfrue",
+                "En berømt statue i København",
+                "København",
+                Arrays.asList("historie", "kultur", "kunst")
+        );
+        TouristAttraction a2 = new TouristAttraction(
+                "Tivoli",
+                "Forlystelsespark midt i København",
+                "København",
+                Arrays.asList("sjov", "familie", "forlystelser")
+        );
+        attractions.put(a1.getId(), a1);
+        attractions.put(a2.getId(), a2);
     }
 
-    // CREATE
-    public void addAttraction(TouristAttraction attraction) {
-        attractions.add(attraction);
-    }
-
-    // READ alle
     public List<TouristAttraction> getAttractions() {
-        return attractions;
+        return new ArrayList<>(attractions.values());
     }
 
-    // READ én via navn
-    public TouristAttraction getAttraction(String name) {
-        for (TouristAttraction attraction : attractions) {
-            if (attraction.getName().equalsIgnoreCase(name)) {
-                return attraction;
-            }
-        }
-        return null;
+    public TouristAttraction getAttraction(UUID id) {
+        return attractions.get(id);
     }
 
-    // UPDATE via navn
+    public void addAttraction(TouristAttraction attraction) {
+        attractions.put(attraction.getId(), attraction);
+    }
+
     public void updateAttraction(TouristAttraction updatedAttraction) {
-        for (int i = 0; i < attractions.size(); i++) {
-            if (attractions.get(i).getName().equalsIgnoreCase(updatedAttraction.getName())) {
-                attractions.set(i, updatedAttraction);
-                return;
-            }
-        }
+        attractions.put(updatedAttraction.getId(), updatedAttraction);
     }
 
-    // DELETE via navn
-    public void deleteAttraction(String name) {
-        attractions.removeIf(a -> a.getName().equalsIgnoreCase(name));
+    public void deleteAttraction(UUID id) {
+        attractions.remove(id);
     }
 }
