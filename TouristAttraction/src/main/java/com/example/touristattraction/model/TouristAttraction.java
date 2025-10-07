@@ -15,11 +15,19 @@ public class TouristAttraction {
         this.id = UUID.randomUUID();
     }
 
+    public TouristAttraction(String name, String description, String city, List<String> tagList) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.description = description;
+        this.city = city;
+        this.tags = tags;
+    }
+
     public UUID getId() {
         return id;
     }
 
-    public void setId(UUID id) { // 👈 DENNE ER VIGTIG
+    public void setId(UUID id) { 
         this.id = id;
     }
 
