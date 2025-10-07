@@ -30,7 +30,6 @@ public class TouristAttraction {
     public List<String> getTags() { return tags; }
     public String getImagePath() { return imagePath; }
 
-    public void setId(UUID id) { this.id = id; }
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
     public void setCity(String city) { this.city = city; }
