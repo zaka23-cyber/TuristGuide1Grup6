@@ -22,12 +22,13 @@ jobs:
 
       - name: Build & Run Tests
         run: mvn clean verify
+        working-directory: TouristAttraction
 
       - name: Upload test reports
         uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: target/surefire-reports
+          path: TouristAttraction/target/surefire-reports
 
   qodana:
     needs: build
@@ -39,4 +40,5 @@ jobs:
       - name: Run Qodana analysis
         uses: JetBrains/qodana-action@v2024.2
         with:
+          project-dir: TouristAttraction
           upload-result: true
