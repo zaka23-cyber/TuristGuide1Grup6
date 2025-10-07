@@ -15,24 +15,51 @@ public class TouristAttraction {
         this.id = UUID.randomUUID();
     }
 
-    public TouristAttraction(String name, String description, String city, List<String> tags) {
-        this.id = UUID.randomUUID();
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) { // 👈 DENNE ER VIGTIG
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 
-    public UUID getId() { return id; }
-    public String getName() { return name; }
-    public String getDescription() { return description; }
-    public String getCity() { return city; }
-    public List<String> getTags() { return tags; }
-    public String getImagePath() { return imagePath; }
+    public String getImagePath() {
+        return imagePath;
+    }
 
-    public void setName(String name) { this.name = name; }
-    public void setDescription(String description) { this.description = description; }
-    public void setCity(String city) { this.city = city; }
-    public void setTags(List<String> tags) { this.tags = tags; }
-    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 }

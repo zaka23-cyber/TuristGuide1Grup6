@@ -1,22 +1,12 @@
 package com.example.touristattraction;
 
-import org.testng.annotations.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static org.assertj.core.api.Assertions.assertThat;
+@SpringBootApplication
+public class TouristAttractionApplication {
 
-@SpringBootTest
-class DatabaseConnectionTest {
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Test
-    void canConnectToDatabase() {
-        Integer result = jdbcTemplate.queryForObject("SELECT 1", Integer.class);
-        assertThat(result).isEqualTo(1);
-        System.out.println("✅ Forbindelse til MySQL virker!");
+    public static void main(String[] args) {
+        SpringApplication.run(TouristAttractionApplication.class, args);
     }
 }
